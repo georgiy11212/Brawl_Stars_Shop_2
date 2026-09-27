@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title">Brawl Store 2.0</title>
+    <!-- Шрифти та іконки FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-cyber">
+
+    <!-- Шапка сайту -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fa-solid fa-gamepad glow-icon"></i>
+                <span>2.0 <span class="highlight">BRAWL STORE</span></span>
+            </div>
+            <div class="header-actions">
+                <div class="balance-badge">
+                    <i class="fa-solid fa-wallet" style="color: #fa8e00;"></i>
+                    <span id="user-uah">0</span> Гривні
+                </div>
+                <div class="balance-badge">
+                    <i class="fa-solid fa-gem" style="color: #3afa00;"></i>
+                    <span id="user-gems">0</span> Геми
+                </div>
+                <div class="balance-badge">
+                    <i class="fa-solid fa-ticket" style="color: #ff0077;"></i>
+                    <span id="user-passes">0</span> Пропуски
+                </div>
+                <button class="cart-btn" id="open-cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-counter" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основний контент -->
+    <main class="main-container">
+
+        <!-- Ексклюзивний банер (Exclusive Offer на 100k) -->
+        <section class="promo-banner" id="promo-banner">
+            <div class="promo-content">
+                <span class="badge-limited">ПРЕМІУМ АКЦІЯ</span>
+                <h1>Ваш Перший Кастомізатор Стилю</h1>
+                <p>Накопичи 100,000 гемів, щоб розблокувати 3 нові ультра-теми оформлення найвищого рівня з кібер-анімаціями та неймовірним світінням!</p>
+                <button class="btn-primary" onclick="buyExclusiveOffer()">100,000 Геми</button>
+            </div>
+            <div class="banner-image">
+                <i class="fa-solid fa-crown"></i>
+            </div>
+        </section>
+
+        <!-- Секретний банер акції на 200,000 гемів -->
+        <section class="promo-banner hidden" id="promo-banner-200k" style="background: linear-gradient(135deg, #28004d, #7a00cc); border-color: #ff00ea;">
+            <div class="promo-content">
+                <span class="badge-limited" style="background: #ff00ea; box-shadow: 0 0 15px #ff00ea;">БІЛЬШЕ ЕКСКЛЮЗИВУ</span>
+                <h1>Новий Неоновий Інтерфейс</h1>
+                <p>Ексклюзивна пропозиція! Отримайте ще 3 новітні кібер-неонові стилі найвищого рівня та станьте володарем максимального сяйва!</p>
+                <button class="btn-primary" style="background: linear-gradient(135deg, #ff00ea, #00ffff); color:#000;" onclick="buyUltraNeonOffer()">200,000 Геми</button>
+            </div>
+            <div class="banner-image">
+                <i class="fa-solid fa-bolt" style="color: #00ffff; text-shadow: 0 0 30px #00ffff;"></i>
+            </div>
+        </section>
+
+        <!-- Секретний банер акції на 500,000 гемів -->
+        <section class="promo-banner hidden" id="promo-banner-500k" style="background: linear-gradient(135deg, #0a0a0a, #43006b); border-color: #ff0055; box-shadow: 0 0 50px rgba(255, 0, 85, 0.4);">
+            <div class="promo-content">
+                <span class="badge-limited" style="background: linear-gradient(90deg, #ff0055, #ffaa00); box-shadow: 0 0 20px #ff0055;">АКЦІЯ ДЛЯ ЗАДРОТІВ</span>
+                <h1>Акція На Переливаючі Стилі</h1>
+                <p>Легендарна прокачка! І ще 3 нових супер-преміум стилі, де кожен піксель, кнопка та фон неймовірно переливаються райдужними неоновими хвилями!</p>
+                <button class="btn-primary" style="background: linear-gradient(90deg, #ff0055, #00ffff, #ff00ff); color:#fff; text-shadow: 0 0 10px #000;" onclick="buySuperPremiumOffer()">500,000 Геми</button>
+            </div>
+            <div class="banner-image">
+                <i class="fa-solid fa-wand-magic-sparkles" style="color: #ff00aa; text-shadow: 0 0 30px #ff00aa;"></i>
+            </div>
+        </section>
+
+        <!-- Секретний банер акції на 1,000,000 гемів -->
+        <section class="promo-banner hidden" id="promo-banner-1m" style="background: linear-gradient(135deg, #000, #ff007f); border-color: #00ffff; box-shadow: 0 0 60px rgba(0, 255, 255, 0.6);">
+            <div class="promo-content">
+                <span class="badge-limited" style="background: linear-gradient(90deg, #00ffff, #ff00ea, #ffd700); color: #000; box-shadow: 0 0 25px #00ffff;">ТИ ПРОФІ-ПОКУПЕЦЬ</span>
+                <h1>Ультра Мега Неоновий Апокаліпсис Для OG-Гравців</h1>
+                <p>Вершина еволюції стилю! Переливається все: фон, градієнти, кнопки та навіть сам ТЕКСТ! Знижує ціни на всі товари на 5% і дає +10% до всіх нагород!</p>
+                <button class="btn-primary" style="background: linear-gradient(90deg, #00ffff, #ff00ea, #00ff66); color:#000; font-weight:900;" onclick="buyUltrametaOffer()">1,000,000 Геми</button>
+            </div>
+            <div class="banner-image">
+                <i class="fa-solid fa-fire-flame-curved" style="color: #00ffff; text-shadow: 0 0 40px #00ffff;"></i>
+            </div>
+        </section>
+
+        <!-- Панель налаштування стилю -->
+        <section class="customizer-panel hidden" id="customizer-panel">
+            <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Ультра-панель керування стилем</h3>
+            <p class="customizer-desc">Обирай оформлення преміум-класу, створене для справжніх володарів кібервсесвіту:</p>
+            <div class="customizer-options">
+                <button class="theme-btn active" onclick="setTheme('cyber')"><i class="fa-solid fa-bolt"></i> Cyber Neon</button>
+                <button class="theme-btn" onclick="setTheme('gold')"><i class="fa-solid fa-crown"></i> Golden Luxury</button>
+                <button class="theme-btn" onclick="setTheme('matrix')"><i class="fa-solid fa-code"></i> Matrix Green</button>
+                <!-- Ультра-неонові стилі (після 200k) -->
+                <button class="theme-btn hidden ultraneon-btn" id="btn-theme-un1" onclick="setTheme('ultraneon1')"><i class="fa-solid fa-fire"></i> Cyberpunk Neon</button>
+                <button class="theme-btn hidden ultraneon-btn" id="btn-theme-un2" onclick="setTheme('ultraneon2')"><i class="fa-solid fa-star"></i> Hyper Purple</button>
+                <button class="theme-btn hidden ultraneon-btn" id="btn-theme-un3" onclick="setTheme('ultraneon3')"><i class="fa-solid fa-atom"></i> Electric Cyan</button>
+                <!-- Супер преміум (після 500k) -->
+                <button class="theme-btn hidden super-btn" id="btn-theme-sp1" onclick="setTheme('ultragold')"><i class="fa-solid fa-gem"></i> Liquid Gold</button>
+                <button class="theme-btn hidden super-btn" id="btn-theme-sp2" onclick="setTheme('ultrarainbow')"><i class="fa-solid fa-rainbow"></i> Cyber Rainbow</button>
+                <button class="theme-btn hidden super-btn" id="btn-theme-sp3" onclick="setTheme('ultramatrix')"><i class="fa-solid fa-network-wired"></i> Neon Matrix Flow</button>
+                <!-- Ультра мега прокачані стилі (після 1,000,000) -->
+                <button class="theme-btn hidden mega-btn" id="btn-theme-mg1" onclick="setTheme('ultrameon1')"><i class="fa-solid fa-dragon"></i> Apex Neon Chaos</button>
+                <button class="theme-btn hidden mega-btn" id="btn-theme-mg2" onclick="setTheme('ultrameon2')"><i class="fa-solid fa-meteor"></i> Supernova Pulse</button>
+                <button class="theme-btn hidden mega-btn" id="btn-theme-mg3" onclick="setTheme('ultrameon3')"><i class="fa-solid fa-infinity"></i> Quantum Cyber Flow</button>
+            </div>
+        </section>
+
+        <!-- Панель Налаштувань (з'являється після покупки акції на 75,000 гемів у вкладці "Акції") -->
+        <section class="customizer-panel hidden" id="settings-panel" style="border-color: #00f0ff; box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);">
+            <h3><i class="fa-solid fa-gears"></i> <span data-i18n="settingsTitle">Панель Налаштувань</span></h3>
+            <p class="customizer-desc" data-i18n="settingsDesc">Керуйте мовою, звуками, музикою та темою оформлення:</p>
+            <div class="settings-grid">
+                <!-- Перемикач мови -->
+                <div class="setting-item">
+                    <span data-i18n="langLabel"><i class="fa-solid fa-globe"></i> Мова / Language</span>
+                    <div class="setting-controls">
+                        <button class="setting-btn active" id="lang-ua" onclick="setLanguage('ua')">UA</button>
+                        <button class="setting-btn" id="lang-en" onclick="setLanguage('en')">EN</button>
+                    </div>
+                </div>
+                <!-- Перемикач музики -->
+                <div class="setting-item">
+                    <span data-i18n="musicLabel"><i class="fa-solid fa-music"></i> Музика / Music</span>
+                    <div class="setting-controls">
+                        <button class="setting-btn active" id="music-on" onclick="toggleMusic(true)" data-i18n="on">Увімк</button>
+                        <button class="setting-btn" id="music-off" onclick="toggleMusic(false)" data-i18n="off">Вимк</button>
+                    </div>
+                </div>
+                <!-- Перемикач звукових ефектів -->
+                <div class="setting-item">
+                    <span data-i18n="sfxLabel"><i class="fa-solid fa-volume-high"></i> Звукові ефекти / SFX</span>
+                    <div class="setting-controls">
+                        <button class="setting-btn active" id="sfx-on" onclick="toggleSFX(true)" data-i18n="on">Увімк</button>
+                        <button class="setting-btn" id="sfx-off" onclick="toggleSFX(false)" data-i18n="off">Вимк</button>
+                    </div>
+                </div>
+                <!-- Перемикач темної / світлої теми -->
+                <div class="setting-item">
+                    <span data-i18n="themeModeLabel"><i class="fa-solid fa-circle-half-stroke"></i> Режим теми</span>
+                    <div class="setting-controls">
+                        <button class="setting-btn active" id="mode-dark" onclick="setLightDark('dark')" data-i18n="dark">Темна</button>
+                        <button class="setting-btn" id="mode-light" onclick="setLightDark('light')" data-i18n="light">Світла</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Навігація вкладок -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" data-tab="gems" data-i18n="tabGems"><i class="fa-solid fa-gem"></i> Геми</button>
+            <button class="tab-btn" data-tab="offers" data-i18n="tabOffers"><i class="fa-solid fa-fire"></i> Акції</button>
+            <button class="tab-btn" data-tab="merch" data-i18n="tabMerch"><i class="fa-solid fa-shirt"></i> Мерч</button>
+            <button class="tab-btn" data-tab="wheel" data-i18n="tabWheel"><i class="fa-solid fa-dharmachakra"></i> Колесо Фортуни</button>
+        </div>
+
+        <!-- Вкладка: Геми -->
+        <div class="tab-pane active" id="tab-gems">
+            <div class="products-grid" id="gems-grid"></div>
+        </div>
+
+        <!-- Вкладка: Акції -->
+        <div class="tab-pane" id="tab-offers">
+            <div class="products-grid" id="offers-grid"></div>
+        </div>
+
+        <!-- Вкладка: Мерч -->
+        <div class="tab-pane" id="tab-merch">
+            <div class="products-grid" id="merch-grid"></div>
+        </div>
+
+        <!-- Вкладка: Колесо Фортуни -->
+        <div class="tab-pane" id="tab-wheel">
+            <div class="wheel-container-wrapper">
+                <h2 data-i18n="wheelTitle">Колесо Фортуни</h2>
+                <p class="wheel-desc" data-i18n="wheelDesc">Крути безкоштовно та вибивай гривні або рідкісний Пропуск (🎫)!</p>
+                
+                <div class="wheel-box">
+                    <div class="wheel-pointer"><i class="fa-solid fa-location-arrow"></i></div>
+                    <div class="wheel" id="fortune-wheel"></div>
+                </div>
+
+                <button class="btn-spin" onclick="spinWheel()" data-i18n="spinBtn">Крутити!</button>
+                <div class="wheel-result" id="wheel-result"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Модальне вікно кошика -->
+    <div class="modal-overlay" id="cart-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 data-i18n="cartTitle">Кошик замовлень</h3>
+                <button class="close-modal" id="close-cart"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="cart-items">
+                <p class="empty-cart-text" data-i18n="emptyCart">Кошик порожній 🛒</p>
+            </div>
+            <div class="modal-footer">
+                <div class="total-price">
+                    <span data-i18n="totalLabel">Разом до сплати:</span>
+                    <span id="cart-total">0 ₴ / 0 💎</span>
+                </div>
+                <div class="checkout-buttons">
+                    <button class="btn-checkout" onclick="checkout('standard')" data-i18n="checkoutStd">Оплатити стандартно</button>
+                    <button class="btn-checkout pass-btn" onclick="checkout('pass')" data-i18n="checkoutPass">Купити за Пропуски 🎫</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальне вікно відкриття Мега Ящиків -->
+    <div class="modal-overlay" id="box-opening-modal">
+        <div class="modal box-modal">
+            <h3 data-i18n="boxModalTitle">🎁 Відкриття Мега Ящика х3</h3>
+            <div class="boxes-container" id="boxes-container"></div>
+            <div class="box-rewards-summary" id="box-rewards-summary"></div>
+            <button class="btn-primary hidden" id="close-box-modal" onclick="closeBoxModal()" data-i18n="claimRewards">Забрати нагороди</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
